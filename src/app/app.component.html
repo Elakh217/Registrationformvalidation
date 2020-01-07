@@ -1,0 +1,100 @@
+<div class="container">
+  <div  [hidden]="submitted">
+     <h1>REGISTRATION FORM
+     </h1>
+     <form action=""  #registration="ngForm" (ngSubmit)="onSubmit()">
+       <div class="form_group">
+         <label for="firstname">FirstName:</label>
+         <input type="text" class="formcontrol" id="firstname"
+         [(ngModel)]="model.firstname" name="firstname" #firstname="ngModel" required >
+       </div>
+       <div [hidden]="firstname.valid || firstname.pristine" class="alert alert-danger" >
+         Enter a proper Name
+       </div>
+       <br>
+      <div class="form_group">
+        <label for="lastname">LastName:</label>
+        <input type="text" class="formcontrol" id="lastname">
+      </div>
+     
+      <br>
+      <div class="form_group">
+        <label for="gender">Gender:</label>
+       <input type="text" class="formcontrol" id="gender">
+      </div>
+      <br>
+       <div class="form_group">
+        <label for="collegename">CollegeName:</label>
+        <input type="text" class="formcontrol" id="collegename">
+      </div>
+      <br>
+      <div class="form_group">
+        <label for="address">Address:</label>
+        <input type="text" class="formcontrol" id="address">
+      </div><br>
+      <div class="form_group">
+        <label for="phonenumber">PhoneNumber :</label>
+        <input type="text" class="formcontrol" id="phonenumber">
+      </div>
+      <br>
+      <div class="form_group">
+        <label for="department">Department:</label>
+        <input type="text" class="formcontrol" id="department">
+      </div>
+      <br>
+      <div class="form_group">
+        <label for="email">Email:</label>
+        <input type="text" class="formcontrol" id="email" 
+         [(ngModel)]="model.email" name="email" #email="ngModel" required >
+
+        <div [hidden]="email.valid || email.pristine" class="alert alert-danger" >
+           Enter your Email
+        </div>
+      </div>
+      <br>
+      <button type="submit" (click)="onSubmit()" [disabled]=" registration.form.invalid" class="btn btn-primary" >Submit</button>
+   </form>
+ </div >
+<div [hidden]="!submitted" *ngIf="submitted" >
+  <h2>You Have Submitted The Following:</h2>
+  <div class="row">
+    <div class="col-xs-3">FirstName:</div>
+    <div class="col-xs-9">{{model.firstname}}</div>
+  </div>
+  <div class="row">
+    <div class="col-xs-3">LastName:</div>
+  <div class="col-xs-9">{{model.lastname}}</div>
+  </div>
+  <div class="row">
+    <div class="col-xs-3">Gender:</div>
+  <div class="col-xs-9">{{model.gender}}</div>
+  </div>
+  <div class="row">
+    <div class="col-xs-3">CollegeName:</div>
+  <div class="col-xs-9">{{model.collegename}}</div>
+  </div>
+  <div class="row">
+    <div class="col-xs-3">Address:</div>
+  <div class="col-xs-9">{{model.address}}</div>
+  </div>
+  <div class="row">
+    <div class="col-xs-3">Phonenumber:</div>
+  <div class="col-xs-9">{{model.phonenumber}}</div>
+  </div>
+  <div class="row">
+    <div class="col-xs-3">Department:</div>
+  <div class="col-xs-9">{{model.department}}</div>
+  </div>
+  <div class="row">
+    <div class="col-xs-3">Email:</div>
+  <div class="col-xs-9">{{model.email}}</div>
+  </div>
+
+<button class="btn btn-primary" (click)="submitted=false">Edit</button>
+</div>
+
+
+</div>
+
+
+<router-outlet></router-outlet>
